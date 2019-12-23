@@ -19,7 +19,7 @@ class FulfillmentManager {
   }
 
   /**
-   * 
+   * handler for intent: "identify"
    * @param {import('./types/fulfillments').IntentDetails} details 
    */
   identify(details) {
