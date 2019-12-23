@@ -26,7 +26,9 @@ class FulfillmentManager {
     console.log('identify - details', details)
     console.log('output contexts', details.outputContexts)
     const {
-      person: { name },
+      parameters: {
+        person: { name }
+      },
       outputContexts
     } = details
 
