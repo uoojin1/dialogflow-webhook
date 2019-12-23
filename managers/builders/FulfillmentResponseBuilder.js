@@ -15,10 +15,7 @@ class FulfillmentResponsePayloadBuilder {
    * @param {import('../types/fulfillments').OutputContext[]} allPossibleOutputContexts 
    * @param {string[]} targetContextNames 
    */
-  withOutputContexts(allPossibleOutputContexts, targetContextNames) {
-    const outputContexts = allPossibleOutputContexts.filter((outputContextCandidate) => {
-      return outputContextCandidate.name.some(targetContextNames)
-    })
+  withOutputContexts(outputContexts) {
     this._response.outputContexts = outputContexts
     return this
   }
