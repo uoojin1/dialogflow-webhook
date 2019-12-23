@@ -23,7 +23,8 @@ class FulfillmentManager {
    * @param {import('./types/fulfillments').IntentDetails} details
    */
   identify(details) {
-    console.log('identify - details', details)
+    console.log('identify - details')
+    console.dir(details.parameters, { depth: null })
     console.log('output contexts', details.outputContexts)
     const {
       parameters: {
