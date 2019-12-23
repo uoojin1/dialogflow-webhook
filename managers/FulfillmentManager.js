@@ -1,4 +1,4 @@
-const { FulfillmentResponsePayloadBuilder } = require('./builders/FulfillmentResponseBuilder')
+const { FulfillmentResponseBuilder } = require('./FulfillmentResponseBuilder')
 
 class FulfillmentManager {
   /**
@@ -23,10 +23,6 @@ class FulfillmentManager {
    * @param {import('./types/fulfillments').IntentDetails} details
    */
   identify(details) {
-    console.log('details', details)
-    console.log('details', details.parameters)
-    console.log('details', details.parameters.person)
-    console.log('details', details.parameters.person.name)
     const {
       parameters: {
         person: { name }
@@ -55,7 +51,7 @@ class FulfillmentManager {
       .withFulfillmentText(fulfillmentText)
       .withOutputContexts([outputContext])
       .build()
-    console.log({ responsePayload })
+
     return responsePayload
   }
 }

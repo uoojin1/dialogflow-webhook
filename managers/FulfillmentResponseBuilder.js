@@ -1,8 +1,8 @@
-const responseTempalte = require('../../controllers/res.example.json')
+const responseTemplate = require('./res.example.json')
 
-class FulfillmentResponsePayloadBuilder {
+class FulfilmentResponseBuilder {
   constructor() {
-    this._response = responseTempalte
+    this._response = responseTemplate
   }
 
   withFulfillmentText(fulfillmentText) {
@@ -10,11 +10,6 @@ class FulfillmentResponsePayloadBuilder {
     return this
   }
 
-  /**
-   * Filters out the wanted output contexts based on the 'targetContextNames'
-   * @param {import('../types/fulfillments').OutputContext[]} allPossibleOutputContexts 
-   * @param {string[]} targetContextNames 
-   */
   withOutputContexts(outputContexts) {
     this._response.outputContexts = outputContexts
     return this
@@ -32,5 +27,5 @@ class FulfillmentResponsePayloadBuilder {
 }
 
 module.exports = {
-  FulfillmentResponsePayloadBuilder
+  FulfilmentResponseBuilder
 }

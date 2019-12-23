@@ -15,14 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => res.send('Hello World!'))
-
+// the api endpoint to serve fulfillment requests from the dialogflow agent
 app.post('/fulfillment', fulfillmentController)
 
-// app.post('/fulfillment', function(req, res) {
-//   console.log("request body")
-//   console.dir(req.body, { depth: null })
-//   res.sendStatus(200)
-// })
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Nascent-escaperoom webhook listening on port ${port}!`))
