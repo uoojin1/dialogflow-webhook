@@ -5,14 +5,12 @@ async function fulfillmentController(req, res) {
     // responseId,
     session,
     queryResult: {
-      queryText,
       action,
       parameters,
-      // fulfillmentText,
+      fulfillmentText,
       // fulfillmentMessages,
       outputContexts,
-      intent,
-      languageCode
+      intent
     }
   } = req.body
 
@@ -21,19 +19,7 @@ async function fulfillmentController(req, res) {
     parameters,
     outputContexts
   })
-
-  console.log('\n\nresponse', response)
-  console.log('\n\n ---- fulfillment ----')
-  console.log({ queryText })
-  console.log({ action })
-  console.log({ parameters })
-  console.dir(outputContexts)
-  console.log({ intent })
-  console.log({ languageCode })
-  console.log({ session })
-  console.log('\n\n ---- done ----')
-
-  // response needs to follow a specific format
+  console.log('response?', response)
   res.json(response)
 }
 

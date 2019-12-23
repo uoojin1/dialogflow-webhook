@@ -1,4 +1,3 @@
-const types = require('./types/fulfillments')
 const { FulfillmentResponsePayloadBuilder } = require('./builders/FulfillmentResponseBuilder')
 
 class FulfillmentManager {
@@ -8,6 +7,7 @@ class FulfillmentManager {
    * @param {import('./types/fulfillments').IntentDetails} details 
    */
   handleIntent(intent, details) {
+    // parse to select the right handler
     const { displayName: intentName } = intent
 
     switch(intentName) {
@@ -20,15 +20,39 @@ class FulfillmentManager {
 
   /**
    * handler for intent: "identify"
-   * @param {import('./types/fulfillments').IntentDetails} details 
+   * @param {import('./types/fulfillments').IntentDetails} details
    */
   identify(details) {
     console.log('identify - details', details)
     console.log('output contexts', details.outputContexts)
-    return new FulfillmentResponsePayloadBuilder()
-      .withFulfillmentText('hi there')
-      .withOutputContexts([details.outputContexts[0]])
+    const {
+      person: { name },
+      outputContexts
+    } = details
+
+    let fulfillmentText;
+    let outputContext;
+
+    if (name.toLowercase() === 'rex') {
+      outputContext = outputContexts.find((context) => {
+        return context.name.includes('/contexts/code-green')
+      })
+      fulfillmentText = 'Good day, Captain.'
+    }
+
+    else {
+      outputContext = outputContexts.find((context) => {
+        return context.name.includes('/contexts/code-green')
+      })
+      fulfillmentText = 'Unauthorized individual detected. Activating code red.'
+    }
+
+    const responsePayload = new FulfillmentResponsePayloadBuilder()
+      .withFulfillmentText(fulfillmentText)
+      .withOutputContexts([outputContext])
       .build()
+    console.log({ responsePayload })
+    return responsePayload
   }
 }
 
