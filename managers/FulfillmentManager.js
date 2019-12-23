@@ -23,9 +23,10 @@ class FulfillmentManager {
    * @param {import('./types/fulfillments').IntentDetails} details
    */
   identify(details) {
-    console.log('identify - details')
-    console.dir(details.parameters, { depth: null })
-    console.log('output contexts', details.outputContexts)
+    console.log('details', details)
+    console.log('details', details.parameters)
+    console.log('details', details.parameters.person)
+    console.log('details', details.parameters.person.name)
     const {
       parameters: {
         person: { name }
@@ -36,7 +37,7 @@ class FulfillmentManager {
     let fulfillmentText;
     let outputContext;
 
-    if (name.toLowercase() === 'rex') {
+    if (name.toLowercase === 'rex') {
       outputContext = outputContexts.find((context) => {
         return context.name.includes('/contexts/code-green')
       })
