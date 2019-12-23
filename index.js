@@ -17,7 +17,8 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/fulfillment', function(req, res) {
-  console.log("request body\n\n", req.body)
+  console.log("request body")
+  console.dir(req.body, { depth: null })
   res.sendStatus(200)
 })
 
