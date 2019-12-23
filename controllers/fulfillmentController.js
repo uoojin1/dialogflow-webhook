@@ -19,7 +19,7 @@ async function fulfillmentController(req, res) {
     parameters,
     outputContexts
   })
-  console.log('response?', response)
+
   res.json(response)
 }
 
